@@ -1,21 +1,46 @@
-function App() {
-}
-export default App
+import React from 'react'; // This is not explicitly needed in upper versions 
+import PropsMapsCond from './PropsMapsCond'; 
+
+
+// adhering to concise arrow function syntax (see core js) 
+// to enter js world within jsx we use {} 
+/*
+instead of passing props name in App as App(props) then using it like {props.greet}
+we can destructure (see js destructuring) it as {greet} and use it directly.
+here in the below component we have two names for props greet and name. name here
+has a default value just like default parameters in js function, incase name is not 
+passed it will be "John Doe". 
+*/
+
+const App = ({greet, name="John Doe"}) => (
+  <>
+    <h1>{greet} from React, {name}</h1>
+    <p>Learning React is fun!</p>
+    <PropsMapsCond/>
+  </>
+); 
+export default App;
+
+
+
+
 
 
 
 
 /************************************************************************************
--------------------------------------------------------------------COMPONENTS AND JSX 
+-------------------------------------------------------------------JSX AND COMPONENTS
+---------------------------------------------- IMPORTS AND EXPORTS
+-----------------------------------------PROPS
+--------------------CONDITIONAL RENDERING
+*************************************************************************************
 Q. EXPALIN WHAT IS JSX ? **
    - JSX stands for JavaScript Syntax Extension
    - It is the syntax used in react that allows to write 
      HTML elements in JavaScript and react puts these html elements in 
      DOM without for us to write DOM methods like createElement or appendChild 
      internally. 
-   
-     **
-     More details about internall workings.. 
+ 
    - In React behind the scene this happens basically:
      React.createElement("h1", "null", "Hello From React");
      null is for props which acts as attributes, this is what 
@@ -31,11 +56,10 @@ Q. EXPALIN WHAT IS JSX ? **
      react further converts to it objects and to elements (Virtual DOM). This is
      what is called Transpilation (Conversion of one language to its equivalent).
 
-   **
 Q. EXPLAIN WHAT ARE COMPONENTS IN REACT ? WHAT ARE COMPOSITIONS AND HOW 
    IT DIFFERS FROM COMPONENTS ?  ** 
  - Components are resuable pieces of codes like JavaScript functions that 
-   returns JSX. It forms a part of UI like navigation component, footer 
+   returns JSX expression. It forms a part of UI like navigation component, footer 
    component, main component etc. 
  - A componnet always starts with capital letter as here in App.jsx. 
 
@@ -45,8 +69,7 @@ Q. EXPLAIN WHAT ARE COMPONENTS IN REACT ? WHAT ARE COMPOSITIONS AND HOW
    composed of Input and Button components.
 
 Q. WHAT DOES REACT ENCOURAGES COMPOSITION OR INHERITANCE ? *** 
-      
-   React encourages composition over inheritance, in other words react 
+  - React encourages composition over inheritance, in other words react 
    emphasizes on building components by combining smaller components together 
    (composition), rather than relying on class inheritance to share behavior or 
    functionality.
@@ -55,11 +78,9 @@ Q. WHAT DOES REACT ENCOURAGES COMPOSITION OR INHERITANCE ? ***
    1. Nesting: Placing components inside other components.
    2. Passing Props: Customizing child components by passing data or functions 
                      as props.
-   (We shall see example of use of composition later in this repo)
-
 
 Q. HOW MANY TYPES OF COMPONENTS ARE THERE IN REACT AND WHAT'S THE 
-   DIFFERENCE ? ** 
+   DIFFERENCE ? ***
   - Class Components are not used anymore as it was more lengthy so 
     Functional Components are used today widely. 
 
@@ -75,10 +96,23 @@ Q. HOW MANY TYPES OF COMPONENTS ARE THERE IN REACT AND WHAT'S THE
      In class components state is managed using this.state and updated using 
      this.setState(). (Class components offers state management without Hooks)
 
+Q. HOW MANY ELEMENTS ARE RETURNED BY A FUNCTIONAL COMPONENT ? OR WHY CAN'T WE RETURN 
+   MULTIPLE ELEMENTS AT THE SAME TIME IN A FUNCTIONAL COMPONENT ? OR WHAT ARE REACT 
+   FRAGMENTS ? *** 
+  - A functional component or any jsx expression can only return one element at a time
+    so generally we return a parent div element and inside that div we can return 
+    multiple elements. 
+  
+  - But to be more specific a div creates creates extra node in DOM, which can be 
+    seen if consoled log. To avoid that we use React Fragments '<> </>'. 
+  
+   - JSX expressions are converted to normal JavaScript function calls and we can not
+    return more than one value technically from a function. 
+
 Q. HOW MANY COMPONENTS ARE RENDERED IN REACT ? WHAT IS THE ROOT COMPONENT IN REACT ?  
    OR EXPLAIN A BIT ABOUT REACT RENDERING. OR WHY ONLY ROOT COMPONENT ? OR WHAT 
    IS THE ENTRY POINT OF A REACT APPLICATION ? WHAT DO YOU MEAN BY SINGLE PAGE
-   APPLICATION ? **
+   APPLICATION ? *** 
   
   - React is used to build SPAs (Single Page Applications) i.e. whole application
     is mounted to a single HTML element having a div with id "root". This div acts 
@@ -95,6 +129,17 @@ Q. HOW MANY COMPONENTS ARE RENDERED IN REACT ? WHAT IS THE ROOT COMPONENT IN REA
   - Rendering multiple root components independently would create multiple 
     DOM trees, which is generally unnecessary and can complicate features of react
     like state management and routing.
+
+Q. EXPLAIN WHAT IS PROP ? HOW TO PASS PROPS IN REACT ? ** 
+   - Like in normal js function we pass parameters that allows us to pass data as 
+     arguments to a function, in React we use props to pass data from one component. 
+
+   - Props (short for properties) are used to pass data from one component to 
+     another in React (more specifically from a parent component to child and 
+     data flow is unidirectional i.e. from parent to child). 
+   
+   - Props can not be modified by its component, they are read-only.
+     e.g. props.name = "newName";  
 */
 
 

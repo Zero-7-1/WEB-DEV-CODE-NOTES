@@ -12,7 +12,12 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <App greet="Hello" />
   </StrictMode>,
 )
-
+/*
+Here in App component we are passing a prop greet="Hello" as an attribute to the App 
+component. If we pass a name prop then it will override the default value. 
+This is just for basic understanding of props. In real word we would bring data
+from an API and pass it as props to the component, we shall see that soon.
+*/

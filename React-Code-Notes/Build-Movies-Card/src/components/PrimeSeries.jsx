@@ -11,7 +11,7 @@ const PrimeSeries = () => {
   };
 
   return (
-      <ul>
+      <ul>  
           {PrimeData.map((series) => (
               <SeriesCard
                   key={series.id}
