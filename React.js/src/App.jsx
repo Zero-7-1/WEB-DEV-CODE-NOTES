@@ -1,39 +1,28 @@
-import React from 'react'; // This is not explicitly needed in upper versions 
-import PropsMapsCond from './PropsMapsCond'; 
-
-
-// adhering to concise arrow function syntax (see core js) 
-// to enter js world within jsx we use {} 
 /*
-instead of passing props name in App as App(props) then using it like {props.greet}
-we can destructure (see js destructuring) it as {greet} and use it directly.
-here in the below component we have two names for props greet and name. name here
-has a default value just like default parameters in js function, incase name is not 
-passed it will be "John Doe". 
+Here everything is more React focused rather than JavaScript or es6+ features so all 
+related js topics would be found in JavaScript folder and it is highlighted which js 
+topics needs attention.  
+------------------------
+In this App component and its associated imports we would see fundamental things like
+JSX and Components, Data Flow (Props & State), Rendering List Items and Conditional 
+Rendering,   
 */
 
-const App = ({greet, name="John Doe"}) => (
-  <>
-    <h1>{greet} from React, {name}</h1>
-    <p>Learning React is fun!</p>
-    <PropsMapsCond/>
-  </>
-); 
-export default App;
+// see imports and exports in JS
+
+import React from 'react'; 
+import PropsMapsCond from './PropsMapsCond'; 
+import catsData from "./api/catsData.json"; 
+import { FilterSortMap, CondUsingTerniary } from './PropsMapsCond';
 
 
 
+// adhere to ES6+, use oncise arrow function syntax (see core js) 
+/* to write a core js code within jsx we use {}, by this we can create a embedded 
+jsx expression that is the js values insterted to HTML*/
 
+/* Intro JSX AND COMPONENTS
 
-
-
-
-/************************************************************************************
--------------------------------------------------------------------JSX AND COMPONENTS
----------------------------------------------- IMPORTS AND EXPORTS
------------------------------------------PROPS
---------------------CONDITIONAL RENDERING
-*************************************************************************************
 Q. EXPALIN WHAT IS JSX ? **
    - JSX stands for JavaScript Syntax Extension
    - It is the syntax used in react that allows to write 
@@ -129,7 +118,33 @@ Q. HOW MANY COMPONENTS ARE RENDERED IN REACT ? WHAT IS THE ROOT COMPONENT IN REA
   - Rendering multiple root components independently would create multiple 
     DOM trees, which is generally unnecessary and can complicate features of react
     like state management and routing.
+*/
 
+
+/* Q. IN REACT HOW CAN YOU PASS DATA FROM ONE COMPONENT TO ANOTHER ?
+   In react data can be passed from parent to its child components by using 
+   Props and State. 
+   All data in react can be divided into props data and states data. 
+
+  Q. WHAT'S THE DIFFERECNE BETWEEN PROPS DATA AND STATES DATA ? 
+   Props data is the data being passed from outside of a component that it recieves 
+   and works with but can not change it. 
+   State data is the data inside the component itself that the component has more 
+   control and can change it. 
+*/
+
+const App = ({greet, name="John Doe"}) => (
+  <>
+    <h1>{greet} from React, {name}</h1>
+    <p>Learning React is fun!</p>
+    <PropsMapsCond catsData={catsData}/>
+    <FilterSortMap /> 
+    <CondUsingTerniary isLoggedIn={true}/>
+  </>
+); 
+export default App;
+
+/* Props .. 
 Q. EXPLAIN WHAT IS PROP ? HOW TO PASS PROPS IN REACT ? ** 
    - Like in normal js function we pass parameters that allows us to pass data as 
      arguments to a function, in React we use props to pass data from one component. 
@@ -139,8 +154,23 @@ Q. EXPLAIN WHAT IS PROP ? HOW TO PASS PROPS IN REACT ? **
      data flow is unidirectional i.e. from parent to child). 
    
    - Props can not be modified by its component, they are read-only.
-     e.g. props.name = "newName";  
+     e.g. props.name = "newName"; 
+
+
+We are bringing a prop data that is being passed in main.jsx of App component. 
+To bring that here instead of passing props name in App as App(props) then using 
+it like {props.greet} we can destructure (see js destructuring) it as {greet} and 
+use it directly. Here in the below component we have two names for props greet and name,
+name here has a default value just like default parameters in js function, 
+incase name is not passed it will be "John Doe". 
+
+We brought the cats data from a dummy json here in App.jsx (so this the parent) and 
+passed it as prop inside the <PropsMapsCond /> so that we canuse it there as child.  
 */
+
+
+
+
 
 
 

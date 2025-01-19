@@ -12,12 +12,14 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App greet="Hello" />
+    <App greet="Hello" name="USER XYZ" />
   </StrictMode>,
 )
 /*
 Here in App component we are passing a prop greet="Hello" as an attribute to the App 
-component. If we pass a name prop then it will override the default value. 
-This is just for basic understanding of props. In real word we would bring data
-from an API and pass it as props to the component, we shall see that soon.
+component. In real word we would bring data from an API using Fetch API or Axios 
+and pass it as props to the component. Or simply here to understand we will bring data
+from a dummy json to a component (for this see PropsMapsCond). Also If the data is 
+already available in our application (like static data, user input, or locally managed 
+state), we can pass it as props directly without fetching it.
 */
