@@ -4,7 +4,7 @@ Here through this component we are going to understand props more and map method
 ----------------------------------------------------------MAP METHOD
 */
 
-import catsData from "./api/catsData.json";
+import catsData from "./api/catsData.json"; 
 
 const PropsMapsCond = () => {
 
